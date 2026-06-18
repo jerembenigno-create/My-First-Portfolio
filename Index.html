@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideal Ignite - Business Support Services</title>
+    
+    <!-- =======================================================
+       PART 1: FONTS & EXTERNAL STYLESHEETS (Font at Icons)
+       ======================================================= -->
+    <!-- Google Fonts para sa Rubik Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome para sa mga Card, Contact, at Chat Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link sa iyong external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- =======================================================
+       PART 2: NAVBAR SECTION (Sticky Header / Navigation Links)
+       ======================================================= -->
+    <nav class="main-navbar">
+        <div class="nav-container">
+            <!-- Pangalan ng Kumpanya (Logo Area) -->
+            <div class="nav-logo">
+                <a href="#">IDEAL IGNITE</a>
+            </div>
+            <!-- Mga Menu Links at Button sa Kanan -->
+            <div class="nav-menu-wrapper">
+                <div class="nav-links">
+                    <a href="#" class="nav-item active">Home</a>
+                    <a href="#solutions" class="nav-item">Solutions</a>
+                    <a href="#pod-model" class="nav-item">The Pod Model</a>
+                    <a href="#pricing" class="nav-item">Pricing</a>
+                    <a href="#careers" class="nav-item">Careers</a>
+                    <a href="#blogs" class="nav-item">Blogs</a>
+                </div>
+                <!-- Ang button na ito ay awtomatikong magbubukas sa hiwalay na chatbot page/iframe -->
+                <a href="javascript:void(0);" onclick="openChatbotForInquiry()" class="btn-quote">Ignite Your Team <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- =======================================================
+       PART 3: HERO LOGO BADGE SECTION (Main Banner Area)
+       ======================================================= -->
+    <header class="logo-badge-container">
+        <div class="logo-badge">
+            <!-- Pangunahing Malaking Pamagat -->
+            <h1 class="brand-title">IDEAL<br>IGNITE</h1>
+            <!-- Subtitle sa ilalim ng Pamagat -->
+            <p class="brand-subtitle">Business Support Services</p>
+            <!-- Black Badge sa pinakailalim ng Hero Box -->
+            <span class="brand-affiliate">An Affiliate of NICLD Law</span>
+        </div>
+    </header>
+
+
+    <!-- =======================================================
+       PART 4: SOLUTIONS BY INDUSTRY SECTION (Grid Cards)
+       ======================================================= -->
+    <section id="solutions" class="unified-solutions-section">
+        <div class="container">
+            <!-- Header ng Solutions Section -->
+            <div class="section-header-unified">
+                <h2>Solutions We Serve By Industry</h2>
+                <p>Core operations and specialized capabilities designed to scale with your specific sector—accelerating your workflows and eliminating efficiency traps.</p>
+            </div>
+
+            <!-- Grid Container para sa 6 na Cards -->
+            <div class="unified-grid">
+                
+                <!-- CARD 1: Legal Industry -->
+                <div class="unified-card accent-blue-top">
+                    <div class="card-header-flex">
+                        <div class="unified-icon bg-blue-muted text-blue-dark"><i class="fa-solid fa-gavel"></i></div>
+                        <h3>Legal Industry</h3>
+                    </div>
+                    <p class="industry-desc">Law firms, corporate legal departments, and specialized legal operations teams.</p>
+                    <div class="solutions-sub-box">
+                        <h4>Specialized Capabilities:</h4>
+                        <ul>
+                            <li><strong>Multi-Practice Litigation:</strong> Medical chronologies, discovery logs, and asset summaries for PI, Criminal, Family, and Labor Law.</li>
+                            <li><strong>Commercial Contracting:</strong> Playbook-based redlining, 24-48 hour turnarounds, CLM administration, and deviation tables.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 2: Risk & Compliance -->
+                <div class="unified-card accent-orange-top">
+                    <div class="card-header-flex">
+                        <div class="unified-icon bg-orange-muted text-orange-dark"><i class="fa-solid fa-square-check"></i></div>
+                        <h3>Risk, Governance & Compliance</h3>
+                    </div>
+                    <p class="industry-desc">Compliance-driven industries requiring strict documentation, adherence to audits, and risk controls.</p>
+                    <div class="solutions-sub-box">
+                        <h4>Specialized Capabilities:</h4>
+                        <ul>
+                            <li><strong>Legal Assurance:</strong> Attorney-led review of SIG, CAIQ questionnaires, and deep regulatory mapping to turn checkbox compliance into a business shield.</li>
+                            <li><strong>Documentation Support:</strong> Standards tracking, framework enforcement, and SOP development.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 3: Executive Support -->
+                <div class="unified-card accent-blue-top">
+                    <div class="card-header-flex">
+                        <div class="unified-icon bg-blue-muted text-blue-dark"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3>Executive & Back-Office Support</h3>
+                    </div>
+                    <p class="industry-desc">High-performing operators, business executives, E-commerce platforms, and customer operations.</p>
+                    <div class="solutions-sub-box">
+                        <h4>Specialized Capabilities:</h4>
+                        <ul>
+                            <li><strong>Executive Virtual Assistants:</strong> Dedicated inbox triage, calendar gatekeeping, and proactive task management.</li>
+                            <li><strong>Back-Office Excellence:</strong> Customer engagement, remote data management, and operational workflows.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 4: Healthcare -->
+                <div class="unified-card">
+                    <div class="card-header-flex">
+                        <div class="unified-icon bg-gray-muted text-gray-dark"><i class="fa-solid fa-stethoscope"></i></div>
+                        <h3>Healthcare</h3>
+                    </div>
+                    <p class="industry-desc">Clinics, healthcare providers, medical practitioners, and health administration networks.</p>
+                    <div class="solutions-sub-box">
+                        <h4>Specialized Capabilities:</h4>
+                        <ul>
+                            <li>Medical records organization, clinical appointment coordination, data entry, and basic healthcare back-office administration.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 5: Finance -->
+                <div class="unified-card">
+                    <div class="card-header-flex">
+                        <div class="unified-icon bg-gray-muted text-gray-dark"><i class="fa-solid fa-wallet"></i></div>
+                        <h3>Finance</h3>
+                    </div>
+                    <p class="industry-desc">Accounting departments, asset firms, independent CPAs, and financial managers.</p>
+                    <div class="solutions-sub-box">
+                        <h4>Specialized Capabilities:</h4>
+                        <ul>
+                            <li>Bookkeeping support, basic financial reporting operations, ledger tracking, and transactional administrative duties.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 6: Technology -->
+                <div class="unified-card">
+                    <div class="card-header-flex">
+                        <div class="unified-icon bg-gray-muted text-gray-dark"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h3>Technology</h3>
+                    </div>
+                    <p class="industry-desc">SaaS startups, IT consulting offices, and growing digital enterprise platforms.</p>
+                    <div class="solutions-sub-box">
+                        <h4>Specialized Capabilities:</h4>
+                        <ul>
+                            <li>Helpdesk coordination, first-tier technical support ticketing, basic data management, and operational queue control.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =======================================================
+       PART 5: THE "POD" ADVANTAGE SECTION (Organizational Diagram)
+       ======================================================= -->
+    <section id="pod-model" class="pod-advantage-section">
+        <div class="pod-container">
+            <!-- Header ng Pod Model Section -->
+            <div class="pod-main-header">
+                <h2>The "Pod" Advantage</h2>
+                <p>Clients buy a fully managed capability, not just a headcount. Integrity-led outsourcing with clear standards and a culture of accountability.</p>
+            </div>
+
+            <!-- Layout: Diagram sa Kaliwa, Timeline sa Kanan -->
+            <div class="pod-content-layout">
+                
+                <!-- Sub-Part A: Structural Org Chart Diagram -->
+                <div class="pod-architecture-card">
+                    <!-- Top Level Box (The Supervisor) -->
+                    <div class="org-box supervisor-box">
+                        <span class="box-role-tag text-orange">[ THE SUPERVISOR ]</span>
+                        <h3>NICLD Partner</h3>
+                        <p>Strategy, QA, & Escalation</p>
+                    </div>
+
+                    <!-- Connecting Vector Lines (HTML/CSS Flow Lines) -->
+                    <div class="org-connecting-lines">
+                        <div class="vertical-line-main"></div>
+                        <div class="horizontal-bridge"></div>
+                        <div class="vertical-branch-left"></div>
+                        <div class="vertical-branch-right"></div>
+                    </div>
+
+                    <!-- Bottom Level Row (Drafter & Operator) -->
+                    <div class="org-bottom-row">
+                        <!-- Left Box -->
+                        <div class="org-box lower-box">
+                            <div class="org-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                            <span class="box-role-tag text-muted">[ THE DRAFTER ]</span>
+                            <h3>PH Associate</h3>
+                            <p>Execution & Research</p>
+                        </div>
+                        <!-- Right Box -->
+                        <div class="org-box lower-box">
+                            <div class="org-icon"><i class="fa-solid fa-gears"></i></div>
+                            <span class="box-role-tag text-muted">[ THE OPERATOR ]</span>
+                            <h3>Admin Support</h3>
+                            <p>HR & IT Infrastructure</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-Part B: Vertical Workflow Timeline Steps -->
+                <div class="workflow-cycle-panel">
+                    <h3>Standard Workflow Cycle</h3>
+                    <div class="workflow-timeline-container">
+                        <!-- Step 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge badge-blue">1</div>
+                            <div class="timeline-body">
+                                <h4>Instructions</h4>
+                                <p>Client sends Agreement via Email or CLM with designated risk parameters.</p>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge badge-teal">2</div>
+                            <div class="timeline-body">
+                                <h4>Triage & Drafting</h4>
+                                <p>Team Lead assigns based on specialty. Associate redlines document against Client Playbook.</p>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge badge-orange">3</div>
+                            <div class="timeline-body">
+                                <h4>QA & Delivery</h4>
+                                <p>NICLD Partner reviews for legal accuracy. Clean draft sent back to Client within 24-36 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =======================================================
+       PART 6: CONTACT & INQUIRY SECTION (Malinis na Commitment at Info Cards)
+       ======================================================= -->
+    <section id="contact-section" class="contact-section text-center">
+        <!-- Pamagat ng Seksyon -->
+        <h2 class="contact-main-title">Ready to Ignite Your Operations?</h2>
+        <p class="section-subtitle">Connect with us using our dynamic assistant below or view corporate channels:</p>
+
+        <div class="contact-container">
+            
+            <!-- Sub-Part A: Ang MALINIS NA COMMITMENT CARD -->
+            <div class="contact-form-card alignment-fix-commitment">
+                <div class="clean-commitment-content">
+                    <div class="commitment-large-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h3>Our Commitment</h3>
+                    <p>Our client success team thoroughly reviews all incoming custom pod inquiries and operational briefs. We are dedicated to alignment, quality, and structure—ensuring your custom proposal or initial workflow draft is processed and delivered back to you within 24 hours.</p>
+                    
+                    <!-- CTA Button para lalong maging interactive ang pagbukas ng hiwalay na Chatbot Form -->
+                    <button class="btn-start-chat-inquiry" onclick="openChatbotForInquiry()">
+                        <i class="fa-solid fa-comments"></i> Submit Details via Chat Assistant
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sub-Part B: Corporate Contact Details (Kanang Kolum) -->
+            <div class="contact-info-column">
+                <div class="info-card">
+                    <h3>Contact Details</h3>
+                    
+                    <!-- HQ Address -->
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-shield"></i></div>
+                        <div>
+                            <strong>Philippine HQ</strong>
+                            <p>Century Diamond Tower,<br>Kalayaan Ave, Century City, Barangay Poblacion, Makati City</p>
+                        </div>
+                    </div>
+
+                    <!-- Mga Telepono -->
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <strong>Phone</strong>
+                            <p>+63 951 519 0594<br>+63 939 938 0505</p>
+                        </div>
+                    </div>
+
+                    <!-- Mga Email Desk -->
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <strong>Email Desk</strong>
+                            <p>sales@idealignite.com<br>operations@idealignite.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =======================================================
+       PART 7: LIVE CHATBOT WIDGET SECTION (Modular Iframe Setup)
+       ======================================================= -->
+    <div class="chatbot-wrapper">
+        <!-- Bilog na Floating Action Button (Launcher Icon) -->
+        <button class="chatbot-launcher" id="chatbotLauncher" onclick="toggleChatbotFrame()">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+
+        <!-- Dito hihigupin ang hiwalay na chatbot.html file -->
+        <iframe src="chatbot.html" class="chatbot-iframe-window" id="chatbotIframe" style="display: none;"></iframe>
+    </div>
+
+
+    <!-- =======================================================
+       PART 8: EXTERNAL JAVASCRIPT CONTROLLER CONNECTION
+       ======================================================= -->
+    <script src="script.js"></script>
+
+</body>
+</html>

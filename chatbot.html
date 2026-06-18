@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideal Ignite - Chatbot Core</title>
+    <!-- Google Font at FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rubik', sans-serif;
+            background: transparent;
+        }
+        .chatbot-window {
+            width: 100%;
+            height: 100vh;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chatbot-header {
+            background-color: #0b1320;
+            color: #ffffff;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .bot-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .bot-avatar {
+            width: 35px;
+            height: 35px;
+            background-color: #2e4e5e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .bot-info h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .bot-info span {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .online-indicator {
+            width: 6px;
+            height: 6px;
+            background-color: #22c55e;
+            border-radius: 50%;
+        }
+        .close-chat-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8fafc;
+        }
+        .message {
+            max-width: 80%;
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .bot-message {
+            align-self: flex-start;
+            background-color: #ffffff;
+            color: #0f172a;
+            border-radius: 14px 14px 14px 0;
+            border: 1px solid #e2e8f0;
+        }
+        .user-message {
+            align-self: flex-end;
+            background-color: #2e4e5e;
+            color: #ffffff;
+            border-radius: 14px 14px 0 14px;
+            text-align: left;
+        }
+        .chatbot-input-area {
+            padding: 12px;
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+        }
+        .input-wrapper {
+            display: flex;
+            gap: 8px;
+        }
+        .chatbot-input-area input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        .send-chat-btn {
+            background-color: #2e4e5e;
+            color: #ffffff;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chatbot-window">
+        <!-- Header -->
+        <div class="chatbot-header">
+            <div class="bot-profile">
+                <div class="bot-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="bot-info">
+                    <h4>Ideal Ignite Assistant</h4>
+                    <span><div class="online-indicator"></div> Online</span>
+                </div>
+            </div>
+            <button class="close-chat-btn" onclick="window.parent.toggleChatbotFrame()">&times;</button>
+        </div>
+        
+        <!-- Screen Usapan -->
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <p>Hi! Welcome to Ideal Ignite Business Support Services. 👋</p>
+            </div>
+        </div>
+
+        <!-- Input Box -->
+        <div class="chatbot-input-area">
+            <div class="input-wrapper" id="dynamicInputWrapper">
+                <input type="text" placeholder="Type your answer here..." id="chatUserInput" autocomplete="off">
+                <button class="send-chat-btn" id="sendChatBtn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let step = 1;
+        let userData = { fullname: "", email: "", company: "", contact: "", message: "" };
+
+        const chatMessages = document.getElementById('chatbotMessages');
+        const chatInput = document.getElementById('chatUserInput');
+        const sendBtn = document.getElementById('sendChatBtn');
+        const dynamicWrapper = document.getElementById('dynamicInputWrapper');
+
+        // Unang Tanong pagkabukas
+        setTimeout(() => {
+            appendBotMessage("Let's set up your custom operational pod. May I know your <strong>Full Name</strong> to get started?");
+            chatInput.placeholder = "Enter your full name...";
+        }, 500);
+
+        function appendBotMessage(text) {
+            const div = document.createElement('div');
+            div.className = 'message bot-message';
+            div.innerHTML = `<p>${text}</p>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function appendUserMessage(text) {
+            const div = document.createElement('div');
+            div.className = 'message user-message';
+            div.innerHTML = `<p>${text}</p>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function processStep() {
+            let val = chatInput.value.trim();
+            if(val === "" && step !== 6) return;
+
+            if(step === 1) {
+                userData.fullname = val;
+                appendUserMessage(val);
+                chatInput.value = "";
+                step = 2;
+                setTimeout(() => {
+                    appendBotMessage(`Thanks, ${userData.fullname}! What is your <strong>Business Email</strong>?`);
+                    chatInput.placeholder = "name@company.com";
+                }, 700);
+            }
+            else if(step === 2) {
+                userData.email = val;
+                appendUserMessage(val);
+                chatInput.value = "";
+                step = 3;
+                setTimeout(() => {
+                    appendBotMessage("Got it. What is the name of your <strong>Company</strong>?");
+                    chatInput.placeholder = "Your company name...";
+                }, 700);
+            }
+            else if(step === 3) {
+                userData.company = val;
+                appendUserMessage(val);
+                chatInput.value = "";
+                step = 4;
+                setTimeout(() => {
+                    appendBotMessage("Great! What is your <strong>Contact Number</strong>?");
+                    chatInput.placeholder = "+1 / +44 / +63...";
+                }, 700);
+            }
+            else if(step === 4) {
+                userData.contact = val;
+                appendUserMessage(val);
+                chatInput.value = "";
+                step = 5;
+                setTimeout(() => {
+                    appendBotMessage("Almost done! Please type your <strong>Message / Operational Challenges</strong>:");
+                    chatInput.placeholder = "Tell us about your requirements...";
+                }, 700);
+            }
+            else if(step === 5) {
+                userData.message = val;
+                appendUserMessage(val);
+                chatInput.value = "";
+                step = 6;
+                
+                setTimeout(() => {
+                    appendBotMessage("To proceed, please review and accept our Data Processing guidelines.");
+                    
+                    const checkDiv = document.createElement('div');
+                    checkDiv.style = "background: #ffffff; padding: 12px; border: 1px solid #e2e8f0; border-radius: 10px; margin-top: 5px;";
+                    checkDiv.innerHTML = `
+                        <input type="checkbox" id="privacyCheck">
+                        <label for="privacyCheck" style="font-size:0.8rem; color:#334155;">I agree to the privacy policy terms.</label>
+                        <button id="finalSubmitBtn" style="width:100%; margin-top:10px; background:#2e4e5e; color:white; border:none; padding:8px; border-radius:20px; cursor:pointer;">Send Inquiry</button>
+                    `;
+                    chatMessages.appendChild(checkDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    dynamicWrapper.style.display = "none";
+
+                    document.getElementById('finalSubmitBtn').addEventListener('click', () => {
+                        if(!document.getElementById('privacyCheck').checked) {
+                            alert("Please check the box to agree.");
+                            return;
+                        }
+                        checkDiv.remove();
+                        appendUserMessage("I agree to terms. [Submitted]");
+                        
+                        console.log("Form Data Sent From Chatbot:", userData);
+
+                        setTimeout(() => {
+                            appendBotMessage("🎯 <strong>Inquiry Received!</strong> Expect an operational proposal in your inbox within 24 hours.");
+                            dynamicWrapper.style.display = "flex";
+                            chatInput.disabled = true;
+                            chatInput.placeholder = "Thank you!";
+                            sendBtn.disabled = true;
+                        }, 800);
+                    });
+                }, 700);
+            }
+        }
+
+        sendBtn.addEventListener('click', processStep);
+        chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') processStep(); });
+    </script>
+</body>
+</html>
